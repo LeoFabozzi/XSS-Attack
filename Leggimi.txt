@@ -1,0 +1,7 @@
+Per avviare correttamente i container :
+ 1. Scaricare Docker Desktop
+ 2. Creare una cartella in cui mettere tutti i file del repository
+ 3. Accedere a quella cartella tramite il terminale.
+ 4. Una volta all'interno di quella cartella contenente i file docker-compose.yml e Dockerfile eseguire il comando 
+      : docker-compose up --build
+ 5. Visitando http://localhost:8080/ o http://localhost:8081/ è possibile accedere alle web application.
