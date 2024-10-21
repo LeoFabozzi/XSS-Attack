@@ -1,0 +1,18 @@
+<?php
+session_start();
+
+// Verifica se l'utente ha effettuato l'accesso
+if (!isset($_SESSION['username'])) {
+    // L'utente non ha effettuato l'accesso, reindirizzalo alla pagina di login
+    header('Location: login2.php');
+    exit(); // Assicura che lo script termini qui e il reindirizzamento sia eseguito correttamente
+}
+
+
+$_SESSION = array();
+
+session_destroy();
+
+header("location: login2.php");
+exit;
+?>

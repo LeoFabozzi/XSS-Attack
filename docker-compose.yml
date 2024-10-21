@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    ports:
+      - "3306:3306" 
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: yes  
+      MYSQL_DATABASE: Vulnerabile
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    volumes:
+      - db_data:/var/lib/mysql
+      - /Users/leofabozzi/Desktop/sito_vulnerabile/src/setup.sql:/docker-entrypoint-initdb.d/setup.sql
+
+  app:
+    build: .
+    restart: always
+    ports:
+      - "8080:80"
+    volumes:
+      - /Users/leofabozzi/Desktop/sito_vulnerabile/src:/var/www/html
+    depends_on:
+      - db
+  
+  admin:
+    build: .
+    restart: always
+    ports:
+      - "8081:80"
+    volumes:
+      - /Users/leofabozzi/Desktop/sito_vulnerabile/sicuro:/var/www/html
+    depends_on:
+      - db
+    
+volumes:
+  db_data:
+
+    
+
+
